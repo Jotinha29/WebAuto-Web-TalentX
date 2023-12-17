@@ -11,14 +11,18 @@ class RepositorioPedido():
         self.db = db
         pass
 
+
     def salvar_pedido(self, pedido: schema.Compra):
         pass
+
 
     def buscar_pedido(self, id: int):
         pass
 
+
     def carros_comprados_id(self, usuario_id: int):
         pass
+
 
     def carros_vendidos_id(self, usuario_id: int):
         pass

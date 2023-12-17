@@ -1,20 +1,40 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
-class User(BaseModel):
-    id: Optional[str] = None
-    name: str
-    CPF: str
-    tel: str
+class CarroSimples(BaseModel):
+    id: Optional[int] = None
+    marca: str
+    modelo: str
+    ano: int
+    preco: float 
+    
+    class Config:
+        orm_mode = True
 
+class Carro(BaseModel):
+    id: Optional[str] = None
+    modelo: str
+    marca: str
+    ano: int
+    preco: float 
+    km: float
+    local: str
+    cor: str
+    usuario_id: Optional[int]
+    #usuario = Optional[UsuarioSimples]
+    
+    class Config:
+        orm_mode = True
+    
+        
 class Usuario(BaseModel):
     id: Optional[int] = None
     nome: str
     cpf: str
-    email: str
     telefone: str
+    email: str
     senha: str
-    #produtos: List[ProdutoSimples] = []
+    produtos: List[CarroSimples] = []
 
     class Config:
         orm_mode = True
@@ -38,32 +58,14 @@ class LoginSucesso(BaseModel):
     usuario: UsuarioSimples
     access_token: str
     
-class Carro(BaseModel):
-    id: Optional[str] = None
-    modelo: str
-    marca: str
-    ano: int
-    preco: float 
-    
-    class Config:
-        orm_mode = True
-    
-class CarroSimples(BaseModel):
-    marca: str
-    modelo: str
-    ano: int
-    preco: float 
-    
-    class Config:
-        orm_mode = True
-        
+
 class Compra(BaseModel):
     id: Optional[str] = None
-    comprador: User
-    vendedor: User
+    comprador: Usuario
+    vendedor: Usuario
     compra: Carro 
     
 class Venda(BaseModel):
     id: Optional[str] = None
-    vendedor: User
+    vendedor: Usuario
     venda: Carro 
