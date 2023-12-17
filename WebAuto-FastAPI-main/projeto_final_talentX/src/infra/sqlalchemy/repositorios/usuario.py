@@ -26,7 +26,7 @@ class RepositorioUsuario():
         usuarios = self.session.execute(stmt).scalars().all()
         return usuarios
 
-    def obter_por_telefone(self, email) -> models.Usuario:
+    def obter_por_email(self, email) -> models.Usuario:
         query = select(models.Usuario).where(
             models.Usuario.email == email)
         return self.session.execute(query).scalars().first()
