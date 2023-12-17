@@ -3,7 +3,7 @@
 from fastapi import APIRouter, status, Depends, HTTPException
 from typing import List
 from src.infra.sqlalchemy.config.database import get_db
-from src.schemas.schema import Compra
+#from src.schemas.schema import schema
 
 
 

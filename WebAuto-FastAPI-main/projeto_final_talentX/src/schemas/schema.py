@@ -29,6 +29,7 @@ class CarroSimples(BaseModel):
 class Compra(BaseModel):
     id: Optional[str] = None
     comprador: User
+    vendedor: User
     compra: Carro 
     
 class Venda(BaseModel):
